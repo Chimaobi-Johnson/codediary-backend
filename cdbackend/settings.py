@@ -11,17 +11,21 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 import cloudinary
+
 import os
 
+load_dotenv()
+
 cloudinary.config(
-    cloud_name=os.environ.get('CLOUD_NAME'), 
-    api_key=os.environ.get('CLOUD_API_KEY'), 
-    api_secret=os.environ.get('CLOUD_API_SECRET')
+    cloud_name=os.getenv('CLOUD_NAME'), 
+    api_key=os.getenv('CLOUD_API_KEY'), 
+    api_secret=os.getenv('CLOUD_API_SECRET')
 )
 
 # Quick-start development settings - unsuitable for production

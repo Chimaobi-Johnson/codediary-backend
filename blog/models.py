@@ -6,7 +6,7 @@ class Post(models.Model):
     title=models.CharField(max_length=200)
     description=models.CharField(max_length=300)
     content=models.TextField()
-    slug=models.SlugField(max_length=255)
+    slug=models.SlugField(max_length=255, null=True, blank=True)
     cover_image=CloudinaryField('image', overwrite=True, format='jpg')
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
@@ -27,7 +27,7 @@ class Post(models.Model):
 
         self.slug=to_assign
 
-        super().save(**args, **kwargs)
+        super().save(*args, **kwargs)
 
 
 
